@@ -18,12 +18,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import TranslationScreen from './src/screens/TranslationScreen';
 import SurahListScreen from './src/screens/SurahListScreen';
+import { useStore } from './src/hooks/useStore';
 
 const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const identifiers = ['en.asad', 'id.indonesian'];
+  const { editions } = useStore();
+  // const identifiers = ['en.asad', 'id.indonesian'];
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -40,7 +42,7 @@ function App(): React.JSX.Element {
           />
           <ScrollView>
             <TranslationScreen />
-            <SurahListScreen surahNumber={114} identifiers={identifiers} />
+            <SurahListScreen surahNumber={114} identifiers={editions} />
           </ScrollView>
         </SafeAreaView>
       </GestureHandlerRootView>
