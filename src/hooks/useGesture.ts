@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+import { Gesture } from 'react-native-gesture-handler';
 import {
   SharedValue,
   interpolate,
@@ -10,6 +12,7 @@ import {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+
 import {
   COLOR_PALLETE,
   MAX_BOUNDARY,
@@ -17,8 +20,6 @@ import {
   ITEM_HEIGHT,
 } from '../constants';
 import { NullableNumber, TItemPositions, TItem } from '../types';
-import { Gesture } from 'react-native-gesture-handler';
-import { Platform } from 'react-native';
 
 export const useGesture = (
   item: TItem,

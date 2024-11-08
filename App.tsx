@@ -6,13 +6,24 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  useColorScheme,
+} from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import TranslationScreen from './src/screens/TranslationScreen';
+import SurahListScreen from './src/screens/SurahListScreen';
+
+const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const identifiers = ['en.asad', 'id.indonesian'];
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -20,15 +31,20 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <GestureHandlerRootView>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <TranslationScreen />
-      </SafeAreaView>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <ScrollView>
+            <TranslationScreen />
+            <SurahListScreen surahNumber={114} identifiers={identifiers} />
+          </ScrollView>
+        </SafeAreaView>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
 }
 
