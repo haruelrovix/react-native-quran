@@ -5,6 +5,7 @@ export type TItem = {
   title: string;
   language: string;
   isDownloaded: boolean;
+  identifier: string;
 };
 
 export type TListItem = {
@@ -12,6 +13,7 @@ export type TListItem = {
   isDragging: SharedValue<number>;
   draggedItemId: SharedValue<NullableNumber>;
   currentItemPositions: SharedValue<TItemPositions>;
+  isDraggable: boolean;
 };
 
 export type TItemPositions = {
@@ -19,10 +21,6 @@ export type TItemPositions = {
     updatedIndex: number;
     updatedTop: number;
   };
-};
-
-export type ColorPalette = {
-  [key: string]: string;
 };
 
 export type NullableNumber = null | number;

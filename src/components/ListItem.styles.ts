@@ -36,4 +36,8 @@ export const styles = StyleSheet.create({
     height: 2,
     backgroundColor: COLOR_PALLETE.silverStorm,
   },
+  deletable: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });

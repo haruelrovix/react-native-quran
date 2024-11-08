@@ -7,7 +7,7 @@ import { getInitialPositions, ITEMS, ITEM_HEIGHT } from '../constants';
 import { styles } from './AnimatedList.styles';
 import { NullableNumber, TItemPositions } from '../types';
 
-export const AnimatedList = () => {
+export const AnimatedList = ({ draggable }: { draggable: boolean }) => {
   // will hold the items position in list at every moment
   const currentItemPositions = useSharedValue<TItemPositions>(
     getInitialPositions(),
@@ -31,6 +31,7 @@ export const AnimatedList = () => {
             isDragging={isDragging}
             draggedItemId={draggedItemId}
             currentItemPositions={currentItemPositions}
+            isDraggable={draggable}
           />
         ))}
       </ScrollView>

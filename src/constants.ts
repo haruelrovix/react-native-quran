@@ -1,24 +1,27 @@
-import { ColorPalette, TItem, TItemPositions } from './types';
+import { TItem, TItemPositions } from './types';
 
 export const ITEM_HEIGHT: number = 60;
 export const ITEMS: TItem[] = [
   {
     id: 0,
-    title: 'Dr. Mustafa Khattab, The Clear Quran',
+    title: 'Muhammad Asad',
     language: 'English',
     isDownloaded: true,
+    identifier: 'en.asad',
   },
   {
     id: 1,
     title: 'Indonesian Islamic affairs ministry',
     language: 'Bahasa Indonesia',
     isDownloaded: true,
+    identifier: 'id.indonesian',
   },
   {
     id: 2,
-    title: 'King Fahad Quran Complex',
+    title: 'Muhammad Quraish Shihab et al.',
     language: 'Bahasa Indonesia',
     isDownloaded: true,
+    identifier: 'id.muntakhab',
   },
 ];
 
@@ -33,7 +36,7 @@ export const getInitialPositions = (): TItemPositions => {
   return itemPositions;
 };
 
-export const COLOR_PALLETE: ColorPalette = {
+export const COLOR_PALLETE = {
   metalBlack: '#0E0C0A',
   nightShadow: '#1C1C1C',
   crystalWhite: '#FFFFFF',

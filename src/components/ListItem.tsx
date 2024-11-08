@@ -12,6 +12,7 @@ export const ListItem = ({
   isDragging,
   draggedItemId,
   currentItemPositions,
+  isDraggable,
 }: TListItem) => {
   const { animatedStyles, gesture } = useGesture(
     item,
@@ -26,13 +27,19 @@ export const ListItem = ({
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subtitle}>{item.language}</Text>
       </View>
-      <GestureDetector gesture={gesture}>
+      {isDraggable ? (
+        <GestureDetector gesture={gesture}>
+          <Animated.View style={styles.draggerContainer}>
+            <View style={[styles.dragger, styles.marginBottom]} />
+            <View style={[styles.dragger, styles.marginBottom]} />
+            <View style={styles.dragger} />
+          </Animated.View>
+        </GestureDetector>
+      ) : (
         <Animated.View style={styles.draggerContainer}>
-          <View style={[styles.dragger, styles.marginBottom]} />
-          <View style={[styles.dragger, styles.marginBottom]} />
-          <View style={styles.dragger} />
+          <Text style={styles.deletable}>-</Text>
         </Animated.View>
-      </GestureDetector>
+      )}
     </Animated.View>
   );
 };
