@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
+    justifyContent: 'flex-end',
+    padding: 10,
+    marginHorizontal: 5,
   },
   title: {
     fontSize: 20,

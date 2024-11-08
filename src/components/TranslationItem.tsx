@@ -1,20 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  GestureResponderEvent,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-interface TranslationItemPros {
+type TranslationItemProps = {
   title: string;
   language: string;
   isDownloaded: boolean;
-}
+  disabled: boolean;
+  onLongPress: (event: GestureResponderEvent) => void;
+};
 
-const TranslationItem: React.FC<TranslationItemPros> = ({ title, language, isDownloaded }) => {
+const TranslationItem = ({
+  title,
+  language,
+  isDownloaded,
+  onLongPress,
+  disabled,
+}: TranslationItemProps) => {
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.language}>{language}</Text>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onLongPress={onLongPress}
+        disabled={disabled}>
         <Text>{isDownloaded ? '-' : '↓'}</Text>
       </TouchableOpacity>
     </View>
