@@ -77,3 +77,18 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Notes 📝
+
+Al Quran app built using React Native and following stacks:
+- React Native Gesture Handler
+- React Native Reanimated
+- React Navigation
+- TanStack Query
+- Zustand
+
+For the draggable items, at first I tried [React Native Draggable FlatList](https://github.com/computerjazz/react-native-draggable-flatlist) just to realized there was a Flickering issue, https://github.com/computerjazz/react-native-draggable-flatlist/issues/434 and another issue, https://github.com/computerjazz/react-native-draggable-flatlist/issues/557. Then I created a custom hook by following this tutorial [React native drag & drop list (60 FPS) from scratch using Reanimated 3 + RNGH](https://medium.com/@varunkukade999/part-1-react-native-drag-drop-list-60-fps-from-scratch-using-reanimated-3-rngh-63c934189bfe) which works flawlessly 🎉
+
+|iOS|Android|
+|-|-|
+|<video src="https://github.com/user-attachments/assets/0b86086a-ae41-407b-aee5-fbcb051a0ada" />|<video src="https://github.com/user-attachments/assets/c129f8e5-1d94-4b8b-9551-550aefc7a5cb" />|
