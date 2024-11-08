@@ -8,10 +8,10 @@ interface SurahListScreenProps {
   identifiers: string[];
 }
 
-const SurahListScreen: React.FC<SurahListScreenProps> = ({
+const SurahListScreen = ({
   surahNumber,
   identifiers,
-}) => {
+}: SurahListScreenProps) => {
   return (
     <View style={styles.container}>
       {identifiers.map(identifier => (

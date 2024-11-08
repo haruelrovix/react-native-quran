@@ -47,3 +47,5 @@ export const ANIMATION_DURATION: number = 600;
 
 export const MIN_BOUNDARY: number = 0;
 export const MAX_BOUNDARY: number = (ITEMS.length - 1) * ITEM_HEIGHT;
+
+export const EDITIONS = ITEMS.map(item => item.identifier);

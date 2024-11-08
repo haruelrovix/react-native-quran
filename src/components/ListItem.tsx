@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
+import Animated, { SharedValue } from 'react-native-reanimated';
 
-import { TListItem } from '../types';
 import { styles } from './ListItem.styles';
+import { TItemPositions, TListItem } from '../types';
 import { useGesture } from '../hooks/useGesture';
+import { useStore } from '../hooks/useStore';
+import { transformEditions } from '../utils/transformers';
 
 export const ListItem = ({
   item,
@@ -14,7 +16,10 @@ export const ListItem = ({
   currentItemPositions,
   isDraggable,
 }: TListItem) => {
-  const [items, setItems] = useState(currentItemPositions);
+  const { updateEditions } = useStore();
+  const setItems = (items: SharedValue<TItemPositions>) =>
+    updateEditions(transformEditions(items));
+
   const { animatedStyles, gesture } = useGesture(
     item,
     isDragging,
@@ -22,8 +27,6 @@ export const ListItem = ({
     currentItemPositions,
     setItems,
   );
-
-  console.info({ items });
 
   return (
     <Animated.View key={item.id} style={[styles.itemContainer, animatedStyles]}>

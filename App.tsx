@@ -25,7 +25,6 @@ const queryClient = new QueryClient();
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const { editions } = useStore();
-  // const identifiers = ['en.asad', 'id.indonesian'];
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
