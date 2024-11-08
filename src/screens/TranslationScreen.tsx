@@ -1,29 +1,45 @@
-import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  useColorScheme,
+} from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { styles } from './TranslationScreen.styles';
-import { AnimatedList } from './AnimatedList';
-import Header from '../components/Header';
+import DownloadedScreen from '../screens/DownloadedScreen';
+import SurahListScreen from '../screens/SurahListScreen';
+import { useStore } from '../hooks/useStore';
 
-const TranslationScreen = () => {
-  const [draggable, setDraggable] = useState<boolean>(false);
+const queryClient = new QueryClient();
 
-  const toggleDraggable = () => {
-    setDraggable(!draggable);
+function TranslationScreen() {
+  const isDarkMode = useColorScheme() === 'dark';
+  const { editions } = useStore();
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.subHeader}>
-        <Text style={styles.sectionTitle}>Downloaded</Text>
-        <TouchableOpacity onPress={toggleDraggable}>
-          <Text style={styles.sectionHeader}>▲▼</Text>
-        </TouchableOpacity>
-      </View>
-      <AnimatedList draggable={draggable} />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <ScrollView>
+            <DownloadedScreen />
+            <SurahListScreen surahNumber={114} identifiers={editions} />
+          </ScrollView>
+        </SafeAreaView>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
-};
+}
 
 export default TranslationScreen;

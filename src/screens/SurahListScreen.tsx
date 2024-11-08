@@ -5,7 +5,7 @@ import { styles } from './SurahListScreen.styles';
 
 interface SurahListScreenProps {
   surahNumber: number;
-  identifiers: string[];
+  identifiers: (string | undefined)[];
 }
 
 const SurahListScreen = ({

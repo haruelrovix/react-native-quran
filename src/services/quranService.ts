@@ -1,4 +1,7 @@
-export const fetchSurah = async (surahNumber: number, identifier: string) => {
+export const fetchSurah = async (
+  surahNumber: number,
+  identifier: string | undefined,
+) => {
   const response = await fetch(
     `https://api.alquran.cloud/v1/surah/${surahNumber}/${identifier}`,
   );

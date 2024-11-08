@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchSurah } from '../services/quranService';
 import { styles } from './SurahScreen.styles';
 
-type SurahScreenProps = { surahNumber: number; identifier: string };
+type SurahScreenProps = { surahNumber: number; identifier: string | undefined };
 
 const SurahScreen = ({ surahNumber, identifier }: SurahScreenProps) => {
   const { error, data, isFetching } = useQuery({

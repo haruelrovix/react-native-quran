@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import { styles } from './Header.styles';
 
 const Header = () => {
   return (
-    <View style={styles.header}>
+    <SafeAreaView style={styles.header}>
       <Text style={styles.title}>Translation</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
