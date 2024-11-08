@@ -15,6 +15,11 @@ import { useStore } from '../hooks/useStore';
 
 const queryClient = new QueryClient();
 
+export type RootStackParamList = {
+  Home: undefined;
+  Translation: undefined;
+};
+
 function TranslationScreen() {
   const isDarkMode = useColorScheme() === 'dark';
   const { editions } = useStore();
