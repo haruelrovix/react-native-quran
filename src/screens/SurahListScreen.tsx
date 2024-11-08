@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import SurahScreen from './SurahScreen';
+import SurahScreen from '../components/SurahScreen';
 import { styles } from './SurahListScreen.styles';
 
 interface SurahListScreenProps {

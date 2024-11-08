@@ -11,6 +11,8 @@ import {
   withDelay,
   withSpring,
   withTiming,
+  runOnJS,
+  configureReanimatedLogger,
 } from 'react-native-reanimated';
 
 import {
@@ -26,6 +28,7 @@ export const useGesture = (
   isDragging: SharedValue<number>,
   draggedItemId: SharedValue<NullableNumber>,
   currentItemPositions: SharedValue<TItemPositions>,
+  setItems: any,
 ) => {
   // used for swapping with currentIndex
   const newIndex = useSharedValue<NullableNumber>(null);
@@ -184,6 +187,8 @@ export const useGesture = (
       }
       // stop dragging
       isDragging.value = withDelay(200, withSpring(0));
+
+      runOnJS(setItems)(currentItemPositions);
     });
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -232,3 +237,7 @@ export const useGesture = (
     gesture,
   };
 };
+
+configureReanimatedLogger({
+  strict: false, // Reanimated runs in strict mode by default
+});

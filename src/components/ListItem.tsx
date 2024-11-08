@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
@@ -14,12 +14,16 @@ export const ListItem = ({
   currentItemPositions,
   isDraggable,
 }: TListItem) => {
+  const [items, setItems] = useState(currentItemPositions);
   const { animatedStyles, gesture } = useGesture(
     item,
     isDragging,
     draggedItemId,
     currentItemPositions,
+    setItems,
   );
+
+  console.info({ items });
 
   return (
     <Animated.View key={item.id} style={[styles.itemContainer, animatedStyles]}>
